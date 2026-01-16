@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorites</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Babylonica&family=Klee+One&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: maroon;
+    color: white;
+    font-family: "Klee One", cursive;
+}
+
+.logo{
+    font-family: "Babylonica", cursive;
+}
+
+html{
+    font-size: 65%;
+    scroll-behavior: smooth;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 9%;
+    background-color: rgba(22, 22, 22, 0.95);
+    border-bottom: 2px solid #b74b4b;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.logo{
+    font-size: 3rem;
+    color: #b74b4b;
+    font-weight: 800;
+    letter-spacing: 0.1rem;
+}
+
+.logo:hover{
+    transform: scale(1.1);
+}
+
+nav{
+    display: flex;
+    align-items: center;
+}
+
+nav a{
+    font-size: 1.6rem;
+    color: white;
+    margin-left: 2.5rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+nav a:hover,
+nav a.active{
+    color: #b74b4b;
+    border-bottom: 3px solid #b74b4b;
+}
+
+section{
+    min-height: 100vh;
+    padding-bottom: 5rem 9% 5rem;
+}
+
+.home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    background-color: black;
+}
+
+.home .home_content {
+    flex: 1;
+}
+
+.home .home_content h1 {
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    font-family: "Babylonica", cursive;
+    letter-spacing: 0.5rem;
+    color: #b74b4b;
+}
+
+.home_content h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.home_content p{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.home_img {
+    width: 20vw;
+    max-width: 400px;
+    border-radius: 50%;
+}
+
+.home_img img {
+    width: 100%;
+    border-radius: 50%;
+    border: 2px solid #b74b4b;
+    cursor: pointer;
+    transition: transform 0.3 ease, border-color 0.3s ease;
+}
+
+.home_img img:hover {
+    transform: scale(1.05);
+    border-color: #fff;
+    animation: floatBob 1s ease infinite;
+}
+
+@keyframes floatBob{
+    0% { transform: scale(1.05) translateY(0);}
+    50% { transform: scale(1.06) translateY(-6px);}
+    100% { transform: scale(1.05) translateY(0);}
+}
+
+.animals {
+    padding: 40px 10px;
+    background-color: #b74b4b;
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+    border-top: 3px dashed #fff;
+}
+
+.animals h1{
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    font-family: "Babylonica", cursive;
+    letter-spacing: 0.5rem;
+    color: #161616;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.animals h2 {
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.3;
+    font-family: "Babylonica", cursive;
+    letter-spacing: 0.5rem;
+    color: #b74b4b;
+    text-align: center;
+    margin-bottom: 0.5px;
+}
+
+.animal-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+}
+
+.animal-item {
+    background-color: #fff;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    width: 280px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(91, 111, 167, 0.3);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animal-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(91, 111, 167, 0.4);
+}
+
+.animal-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+.animal-item p {
+    font-size: 1.5rem;
+    color: black;
+    line-height: 1.6;
+    padding: 20px;
+    font-family: "Klee One", cursive;
+    background-color: whitesmoke;
+    border-radius: 0 0 12px 12px;
+    text-align: center;
+}
+
+.animal-item:before {
+    content: '🐾';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-0%);
+    font-size: 4rem;
+}
+
+.music {
+    padding: 40px 10%;
+    background-color: #161616;
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+    border-top: 3px dashed #fff;
+}
+
+.music h1 {
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    font-family: "Babylonica", cursive;
+    letter-spacing: 0.5rem;
+    color: #b74b4b;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.song-list {
+    margin-bottom: 30px;
+    list-style: none;
+    padding: 0;
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.song-list:hover {
+    transform: scale(1.03);
+}
+
+.song-list iframe {
+    border-radius: 12px;
+    width: 100%;
+    height: 152px;
+    border: none;
+}
+
+.song-list p {
+    font-size: 1.5rem;
+    color: black;
+    line-height: 1.6;
+    padding: 20px;
+    font-family: "Klee One", cursive;
+    background-color: whitesmoke;
+    border-radius: 0 0 12px 12px;
+    text-align: center;
+}
+
+.song-list p:hover {
+    color: #333;
+    background-color: #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .music {
+        padding: 40px 5%;
+    }
+    .song-list iframe {
+        height: 130px;
+    }
+    .music h2 {
+        font-size: 1.6rem;
+    }
+}
+
+.drinks {
+    padding: 40px 10px;
+    background-color: #b74b4b;
+    border-top: 3px dashed #fff;
+}
+
+.drinks h1 {
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    font-family: "Babylonica", cursive;
+    letter-spacing: 0.5rem;
+    color: #161616;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.drinks h2{
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.3;
+    font-family: "Babylonica", cursive;
+    letter-spacing: 0.5rem;
+    color: #161616;
+    text-align: center;
+    margin-bottom: 0.5px;
+}
+
+.drink-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.drink-item {
+    background-color: #fff;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(183, 75, 75, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.drink-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(183, 75, 75, 0.25);
+}
+
+.drink-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.drink-item p {
+    font-size: 1.3rem;
+    color: black;
+    line-height: 1.6;
+    font-family: "Klee One", cursive;
+}
+
+.activities {
+    padding: 40rem 10%;
+    background-color: #161616;
+    border-top: 3px dashed #fff;
+}
+
+.activities h1{
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    font-family: "babylonica", cursive;
+    letter-spacing: 0.5rem;
+    color: #b74b4b;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.activities h2 {
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.3;
+    font-family: "Babylonica", cursive;
+    letter-spacing: 0.5rem;
+    color: #b74b4b;
+    text-align: center;
+    margin-bottom: 0.5px;
+}
+
+.activity-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.activity-item {
+    background-color: #fff;
+    width: 250px;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(137, 182, 182, 0.2);
+    border-left: 5px solid #b74b4b;
+    transition: transform 0.3s ease;
+}
+
+.activity-item:hover {
+    transform: translateY(-8px);
+}
+
+.activity-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.activity-item p {
+    font-family: "Klee One", cursive;
+    font-size: 1.3rem;
+    color: black;
+    text-align: center;
+}
+
+.plush {
+    padding: 40px 10px;
+    background-color: #b74b4b;
+    border-top: 3px dashed #fff;
+}
+
+.plush h1 {
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    font-family: "Babylonica", cursive;
+    letter-spacing: 0.5rem;
+    color: #161616;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.plush h2 {
+    font-size: 3rem;    
+    font-weight: 600;    
+    line-height: 1.3;
+    font-family: "Babylonica", cursive;
+    color: black;    
+    text-align: center;
+    margin-bottom: 0.5px;
+}
+
+.plush-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.plush-item {
+    background-color: #fff;
+    border-radius: 25px;
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+    position: relative;    
+    box-shadow: 0 6px 18px rgba(228, 193, 182, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plush-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(228, 193, 182, 0.5);
+}
+
+.plush-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.plush-item p {
+    font-size: 1.3rem;
+    color: #333;
+    line-height: 1.6;
+    font-family: "Klee One", cursive;
+}
+
+.plush-item:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 5px;
+    background-color: #e4c1b6;
+    border-radius: 8px;
+}
+</style>
+
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">TheresaNatasha</a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#animals">Animals</a>
+            <a href="#music">Songs</a>
+            <a href="#drinks">Drinks</a>
+            <a href="#activities">Activities</a>
+            <a href="#plush">Plushies</a>
+        </nav>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home_img">
+            <img src="myfavimg/hyunjin.png" alt="">
+        </div>
+        <div class="home_content">
+            <h1>Introducing . . .</h1>
+            <h2>Welcome to this collection of my favorites! Σ(°ロ°)</h2>
+            <p>There's nothing fancy - just a little mix of what caught my attention.. take a look!</p>
+        </div>
+    </section>
+
+    <section class="animals" id="animals">
+        <h1>Favorite Animals</h1>
+        <div class="animal-list">
+            <div class="animal-item">
+                <img src="myfavimg/blackcat.png" alt="Cat">
+                <h2>Cat</h2>
+                <p>🐈‍⬛ — Cats are like little mysteries wrapped in fluff. I love how independent they are, yet they'll randomly choose to curl up beside you when you least expect it. Their calmness is comforting, and their curious, clever nature always makes them feel like they know something you don’t. Plus, those tiny toe beans? Adorable.</p>
+            </div>
+            <div class="animal-item">
+                <img src="myfavimg/ferret.png" alt="Ferret">
+                <h2>Ferret</h2>
+                <p>🥟 — Ferrets are chaotic little noodles of joy. There’s just something about their mischievous energy that makes them endlessly entertaining. They’re playful, fast, and sneaky — always exploring, always up to something. I like how they bring a kind of silly unpredictability wherever they go, like life’s never boring with a ferret around.</p>
+            </div>
+            <div class="animal-item">
+                <img src="myfavimg/bunny.png" alt="Bunny">
+                <h2>Bunny</h2>
+                <p>🐇 — Bunnies feel like soft, gentle little souls. Their quietness and calm movements make them so soothing to watch. I love how they twitch their noses and do little happy hops. There’s a delicate sweetness about them, like they carry a peaceful aura. They’re the kind of animal that makes you want to whisper around them.</p>
+            </div>
+            <div class="animal-item">
+                <img src="myfavimg/fox.png" alt="Fox">
+                <h2>Fox</h2>
+                <p>🦊 — Foxes are the perfect balance of elegance and cleverness. I’ve always admired how graceful and quick they are, moving like little shadows in the wild. There’s a kind of wild charm in them — they feel almost magical, like creatures from stories. Mysterious but beautiful, clever but soft-eyed. They’ve always had a bit of an enchanted vibe to me.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="music" id="music">
+        <h1>My Favorite Songs</h1>
+        <ul class="song-list">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1BwFLLe233S6HR1ravS3yi?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <p>At the top of my song lists, 'Miss You' is one of Hyunjin's beautiful solo songs. It's a track that quickly became my all-time favorite. The song is bittersweet, filled with longing and heartache, but in the most delicate and beautiful way possible. His soft, tender voice carries so much emotion, making it feel like an emotional hug that wraps around you. Ever since I became a fan of Stray Kids, this song has been one of those songs I’ve played more times than I can count. It holds a special place in my heart as one of Hyunjin’s most beautiful solo pieces. Every word feels like a piece of his heart, and the raw sadness he conveys makes it the perfect song to listen to when you're feeling reflective or just need to let your emotions flow. What makes it even more touching is knowing that he wrote this song for his past puppy. That small detail adds a deeper layer of love and grief, making the song feel even more fragile and meaningful huhuuu (੭ ;´ - `;)੭ ♡</p>
+        </ul>
+        <ul class="song-list">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4C9Zhjq5ux9ieiDWYfFcfP?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <p>“Scars” at the second place! and once again from Stray Kids, is one of those songs that hits you right in the chest.. not because it's sad, but because it's so full of fight. It’s emotional, but also empowering. The lyrics speak about every struggle, every wound, and how those scars become a part of who you are. Not something to hide, but something that shows growth and survival. The vocals are filled with passion, and the rap lines hit with such intensity, it’s impossible not to feel the weight of their words. There's a kind of beauty in how the song blends pain with determination. It reminds me that even when things get difficult, you can keep going — and those scars you carry? They're proof that you did. That’s what makes this song a favorite for me — it’s not just inspiring, it’s healing in its own fierce way (ง'-'́)ง</p>
+        </ul>
+        <ul class="song-list">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1T0hdoMSjzoKUPbKRmrDg3?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <p>“Twilight” feels like a fading daydream, the kind that drifts in slowly and disappears before you can hold onto it. The song carries the softness of a sky turning violet, when the world starts to quiet down and your thoughts get louder. It tells the story of someone caught in the in-between: between holding on and letting go, between daylight and night, between a memory and a goodbye. The voices feel like whispers under the stars.. not rushed, not desperate, just full of gentle longing. It brings up the feeling of missing someone without needing to say their name, or reminiscing about something beautiful that’s now just out of reach. It’s a song for slow walks, for eyes that sting a little but aren’t crying, for hearts that feel heavy but full. This song doesn’t shout, it glows quietly, like the last light before darkness falls... ₊ ⊹ . ݁˖ . ݁</p>
+        </ul>
+        <ul class="song-list">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/04A4WyCRyHQ8Nb3u3IsfzH?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <p>Next! "I Like It" by Stray Kids captures the thrill of a connection that’s full of chemistry but without the need to define it. It’s about enjoying the moment and the energy between two people without rushing into labels or commitments. The playful lyrics, especially “I love that I like you, but I don’t wanna love,” perfectly express that carefree, exciting feeling of attraction without overthinking where it might lead. The song celebrates living in the present, embracing the fun and the spark, and letting everything unfold naturally, making it feel lighthearted yet full of intensity ౨ৎ</p>
+        </ul>
+        <ul class="song-list">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3Oi8I8awZsuJtSEOGHuOXf?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <p>Last one, quiet difficult for me to decide.. So, I ended up choosing "Butterflies". This song embodies that enchanting moment when you feel both overwhelmed and captivated by someone. The song captures the quiet anxiety of being in their presence, where words often fail, and the heart races uncontrollably. It's just hits different, especially for someone like me who doesn’t usually get all caught up in romantic thoughts. But this song? It’s all about that feeling you get when you can’t stop thinking about someone, and it’s like, "What’s happening? Why do I feel like my heart's beating way too fast whenever I see them?" The imagery of a butterfly—fragile yet full of life—perfectly mirrors the delicate balance of vulnerability and admiration. Each line paints a picture of being drawn into their orbit, where every glance and every movement makes the world shift slightly ( ꩜ ᯅ ꩜;)</p>
+        </ul>
+    </section>
+
+    <section class="drinks" id="drinks">
+        <h1>Favorite Drinks</h1>
+        <div class="drink-list">
+            <div class="drink-item">
+                <img src="myfavimg/coffee.png" alt="Coffee">
+                <h2>Coffee</h2>
+                <p>☕ — If I had to choose one drink to carry through every version of myself, it would be coffee. I take it in different ways depending on the moment—black when I need to think, iced when I’m trying to stay cool and sharp, sweet and milky when I just want a little comfort with a kick. Even when everything feels a bit messy or unclear, coffee always makes sense to me. I bet my friends are tired of seeing me drinking coffee daily.</p>
+            </div>
+            <div class="drink-item">
+                <img src="myfavimg/matcha.png" alt="Matcha">
+                <h2>Matcha</h2>
+                <p>🍵 — It’s not sweet—not really—and that’s exactly what I like about it. It’s gentle but grounded. Bitter in a way that feels honest. I’ll have it when I need focus, or when I just want to slow things down and breathe for a moment.</p>
+            </div>
+            <div class="drink-item">
+                <img src="myfavimg/gingertea.png" alt="Ginger Tea">
+                <h2>Ginger Tea</h2>
+                <p>🌿 — Spicy and soothing, like warmth traveling through your chest. It’s my go-to when I need a gentle pick-me-up or a little healing. It doesn’t need to be dressed up. Just hot water, a slice or two of ginger, maybe a bit of honey if the mood calls for it.</p>            
+            </div>
+            <div class="drink-item">
+                <img src="myfavimg/hotchocolate.png" alt="Hot Chocolate">
+                <h2>Hot Chocolate</h2>
+                <p>🍫 — I’ve never really had much of a sweet tooth. But I make a little exception for hot chocolate. Sometimes, on bad days or when my mood feels off, a bit of sweetness helps. Not too much, just enough to soften the edges.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="activities" id="activities">
+        <h1>Favorite Activities</h1>
+        <div class="activity-list">
+            <div class="activity-item">
+                <img src="myfavimg/sleeping.png" alt="Sleep">
+                <h2>Sleeping</h2>
+                <p>💤 — Sleep isn’t just rest — it’s like a quiet escape where the world slows down and mind gets to drift. It’s my favorite reset button, both physically and emotionally. There’s something really comforting about wrapping myself up in a blanket and letting everything else pause. Sometimes dreams feel more peaceful than real life, and waking up refreshed just hits different.</p>
+            </div>
+            <div class="activity-item">
+                <img src="myfavimg/beingbusy.png" alt="Being Busy">
+                <h2>Being Busy</h2>
+                <p>✍🏻 — Being busy might sound stressful to some, but for me, it means purpose. Whether I’m working on something creative, running errands, or just juggling small daily tasks, staying occupied makes me feel useful and present. I like the rhythm it brings, the sense of momentum, and that little satisfaction at the end of the day when you know you’ve done something.</p>
+            </div>
+            <div class="activity-item">
+                <img src="myfavimg/reading.png" alt="Draw">
+                <h2>Reading</h2>
+                <p>📖 — Reading is a sweet little portal into someone else’s world. It’s one of those rare activities that’s quiet but thrilling, peaceful but full of motion. I love how words can paint entire universes, stirs emotions, or make me pause and think.</p>
+            </div>
+            <div class="activity-item">
+                <img src="myfavimg/cleaning.png" alt="Cleaning">
+                <h2>Cleaning</h2>
+                <p>✨ — There’s something oddly therapeutic about cleaning. It’s like organizing my surroundings helps untangle my thoughts too. I love the before-and-after feeling, the way a freshly cleaned space breathes easier. It’s my way to feel grounded when things get chaotic. Plus, the scent of a clean room? Underrated joy.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="plush" id="plush">
+        <h1>Favorite Plushies</h1>
+        <div class="plush-list">
+            <div class="plush-item">
+                <img src="myfavimg/april.png" alt="Little Bear Plush">
+                <h2>"April"</h2>
+                <p>I’ve had this small brown teddy bear since I was around six or seven—though honestly, I can’t remember a time before it. It's a warm, soft brown; it’s still the most comforting thing I own. There’s a little stitch on one of its legs, slightly loose now. That happened back in kindergarten, and I stitched it back myself. This little bear is still my favorite and always will be.</p>
+            </div>
+            <div class="plush-item">
+                <img src="myfavimg/ranran.png" alt="Bunny Plush">
+                <h2>"Ranran"</h2>
+                <p>My rabbit plush is a little newer than my teddy bear. I got this red and white rabbit plush back in high school. It came into my life quietly, no big story, just suddenly there. I love to hug these plushies on days when school felt heavy or the world just felt a little too loud. It didn’t fix anything, but it made things feel a bit more bearable. Even now, although I don’t cuddle it as much as I used to, it’s still nearby.</p>
+            </div>
+
+        </div>
+    </section>
+</body>
+</html>
