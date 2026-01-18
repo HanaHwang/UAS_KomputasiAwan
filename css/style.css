@@ -8,6 +8,7 @@
 * {
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
 }
@@ -19,7 +20,6 @@ body {
   color: #333;
 }
 
-/* HEADER */
 header {
   background: linear-gradient(135deg, var(--pink-main), var(--pink-dark));
   color: white;
@@ -27,7 +27,6 @@ header {
   padding: 40px 20px;
 }
 
-/* NAV */
 nav {
   background: white;
   text-align: center;
@@ -49,7 +48,6 @@ nav a:hover {
   color: var(--pink-dark);
 }
 
-/* SECTION */
 section {
   background: white;
   max-width: 1200px;
@@ -70,7 +68,6 @@ section h3 {
   margin-top: 30px;
 }
 
-/* CARD GRID */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -96,7 +93,6 @@ section h3 {
   margin-top: 10px;
 }
 
-/* DATE BADGE */
 .date {
   background: var(--pink-soft);
   color: var(--pink-dark);
@@ -107,13 +103,11 @@ section h3 {
   font-weight: 600;
 }
 
-/* TITLES */
 .card h4 {
   margin: 10px 0 5px;
   color: var(--pink-main);
 }
 
-/* LINKS */
 a {
   color: var(--pink-main);
   font-weight: 600;
@@ -123,7 +117,6 @@ a:hover {
   color: var(--pink-dark);
 }
 
-/* FOOTER */
 footer {
   background: var(--pink-main);
   color: white;
@@ -132,7 +125,6 @@ footer {
   margin-top: 40px;
 }
 
-/* MODAL */
 .modal {
   display: none;
   position: fixed;
@@ -162,7 +154,6 @@ footer {
   cursor: pointer;
 }
 
-/* SLIDER CONTROLS */
 .slider-controls {
   margin-top: 15px;
 }
@@ -190,12 +181,12 @@ footer {
 }
 
 .card img:hover {
-  transform: scale(1.05); /* subtle zoom */
-  opacity: 0.95;          /* subtle fade */
+  transform: scale(1.05);
+  opacity: 0.95;
 }
 
 .modal {
-  display: flex; /* keep flex for centering */
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
